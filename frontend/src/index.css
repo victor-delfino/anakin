@@ -1,0 +1,196 @@
+/* ============================================
+   INDEX.CSS - Global Styles
+   ============================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   Custom Fonts
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ============================================
+   Base Styles
+   ============================================ */
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    @apply bg-imperial-dark text-gray-100;
+    @apply min-h-screen;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-imperial-dark;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-700 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-600;
+  }
+}
+
+/* ============================================
+   Component Styles
+   ============================================ */
+@layer components {
+  /* Star Wars style title */
+  .text-star-wars {
+    font-family: 'SF Distant Galaxy', 'Star Jedi', sans-serif;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Narrative text style */
+  .text-narrative {
+    font-family: 'Crimson Text', Georgia, serif;
+    line-height: 1.8;
+    font-size: 1.125rem;
+  }
+
+  /* Glow effects */
+  .glow-light {
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.4);
+  }
+
+  .glow-dark {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+  }
+
+  .glow-yellow {
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
+  }
+
+  /* Force aura */
+  .aura-light {
+    background: radial-gradient(circle, rgba(0, 191, 255, 0.1) 0%, transparent 70%);
+  }
+
+  .aura-dark {
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+  }
+
+  /* Card hover effects */
+  .card-interactive {
+    @apply transition-all duration-300;
+  }
+
+  .card-interactive:hover {
+    @apply transform -translate-y-1;
+    @apply shadow-lg;
+  }
+
+  /* Decision card styles */
+  .decision-light {
+    @apply border-jedi-blue/30;
+    @apply hover:border-jedi-blue hover:shadow-jedi-blue/20;
+  }
+
+  .decision-dark {
+    @apply border-sith-red/30;
+    @apply hover:border-sith-red hover:shadow-sith-red/20;
+  }
+
+  .decision-neutral {
+    @apply border-gray-600;
+    @apply hover:border-gray-500;
+  }
+}
+
+/* ============================================
+   Utility Styles
+   ============================================ */
+@layer utilities {
+  /* Animation utilities */
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      opacity: 0.5;
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(20px);
+    }
+  }
+
+  /* Star background */
+  .bg-stars {
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, white, transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+      radial-gradient(1px 1px at 90px 40px, white, transparent),
+      radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.9), transparent),
+      radial-gradient(1px 1px at 230px 80px, white, transparent),
+      radial-gradient(2px 2px at 300px 150px, rgba(255,255,255,0.7), transparent),
+      radial-gradient(1px 1px at 350px 50px, white, transparent),
+      radial-gradient(1px 1px at 400px 200px, rgba(255,255,255,0.8), transparent),
+      radial-gradient(2px 2px at 500px 100px, white, transparent),
+      radial-gradient(1px 1px at 550px 180px, rgba(255,255,255,0.6), transparent);
+    background-size: 600px 400px;
+    animation: stars 100s linear infinite;
+  }
+
+  @keyframes stars {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 600px 400px;
+    }
+  }
+
+  /* Gradient text */
+  .text-gradient-light {
+    @apply bg-gradient-to-r from-jedi-blue to-force-light-300;
+    @apply bg-clip-text text-transparent;
+  }
+
+  .text-gradient-dark {
+    @apply bg-gradient-to-r from-sith-red to-force-dark-300;
+    @apply bg-clip-text text-transparent;
+  }
+
+  /* Focus ring */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-jedi-blue focus:ring-offset-2 focus:ring-offset-imperial-dark;
+  }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
