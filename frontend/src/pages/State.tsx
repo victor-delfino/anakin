@@ -104,7 +104,6 @@ export const State: React.FC = () => {
               lightSide={lightSide}
               darkSide={darkSide}
               isInConflict={isInConflict}
-              emotion={emotion}
             />
           </Card>
         </motion.div>
