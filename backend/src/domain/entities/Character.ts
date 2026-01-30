@@ -89,11 +89,31 @@ export class Character {
   // Métodos de domínio - Aplicam regras de negócio
 
   /**
-   * Aplica impacto moral baseado em uma decisão
-   * Retorna novo estado (imutabilidade)
+   * Aplica impacto moral baseado em uma decisão (método legado)
+   * @deprecated Use applyBalancedMoralImpact para o novo sistema
    */
   applyMoralImpact(lightDelta: number, darkDelta: number): Character {
     const newMoralState = this._moralState.applyImpact(lightDelta, darkDelta);
+    
+    return new Character({
+      id: this._id,
+      name: this._name,
+      moralState: newMoralState,
+      currentEmotion: this._currentEmotion,
+      title: this._title,
+      createdAt: this._createdAt,
+      updatedAt: new Date(),
+    });
+  }
+
+  /**
+   * NOVO SISTEMA BALANCEADO:
+   * - Decisão LUZ: +luz, -trevas
+   * - Decisão NEUTRA: +luz, +trevas  
+   * - Decisão TREVAS: -luz, +trevas
+   */
+  applyBalancedMoralImpact(alignment: 'light' | 'neutral' | 'dark', intensity: number): Character {
+    const newMoralState = this._moralState.applyBalancedImpact(alignment, intensity);
     
     return new Character({
       id: this._id,

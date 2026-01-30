@@ -31,15 +31,26 @@ export class MoralProgressionRules {
   /**
    * REGRA PRINCIPAL: Aplica decisão ao personagem
    * Retorna novo estado do personagem com todas as consequências
+   * 
+   * SISTEMA BALANCEADO:
+   * - Decisão LUZ: +luz, -trevas
+   * - Decisão NEUTRA: +luz, +trevas (conflito interno)
+   * - Decisão TREVAS: -luz, +trevas
    */
   static applyDecision(character: Character, decision: Decision): MoralProgressionResult {
     const previousTitle = character.title.value;
     const wasNotFallen = !character.hasFallen();
     
-    // 1. Aplicar impacto moral
-    let updatedCharacter = character.applyMoralImpact(
-      decision.impact.lightSideDelta,
-      decision.impact.darkSideDelta
+    // 1. Calcular intensidade baseada nos deltas da decisão
+    const intensity = Math.max(
+      Math.abs(decision.impact.lightSideDelta),
+      Math.abs(decision.impact.darkSideDelta)
+    );
+    
+    // 2. Aplicar impacto moral BALANCEADO
+    let updatedCharacter = character.applyBalancedMoralImpact(
+      decision.alignment,
+      intensity
     );
 
     // 2. Atualizar emoção

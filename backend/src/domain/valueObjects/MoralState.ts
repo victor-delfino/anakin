@@ -30,7 +30,7 @@ export class MoralState {
   // Factory para estado inicial de Anakin (jovem esperançoso)
   static createInitial(): MoralState {
     return new MoralState({
-      lightSide: 60,
+      lightSide: 50,
       darkSide: 20,
     });
   }
@@ -52,8 +52,46 @@ export class MoralState {
   /**
    * Aplica impacto moral e retorna novo estado
    * Imutabilidade garantida
+   * @deprecated Use applyBalancedImpact para o novo sistema de balanceamento
    */
   applyImpact(lightDelta: number, darkDelta: number): MoralState {
+    return new MoralState({
+      lightSide: this._lightSide + lightDelta,
+      darkSide: this._darkSide + darkDelta,
+    });
+  }
+
+  /**
+   * NOVO SISTEMA BALANCEADO:
+   * - Decisão LUZ: +luz, -trevas
+   * - Decisão NEUTRA: +luz, +trevas
+   * - Decisão TREVAS: -luz, +trevas
+   * 
+   * @param alignment - Tipo da decisão: 'light' | 'neutral' | 'dark'
+   * @param intensity - Intensidade do impacto (ex: 10)
+   */
+  applyBalancedImpact(alignment: 'light' | 'neutral' | 'dark', intensity: number): MoralState {
+    let lightDelta = 0;
+    let darkDelta = 0;
+
+    switch (alignment) {
+      case 'light':
+        // Luz sobe, trevas desce
+        lightDelta = intensity;
+        darkDelta = -Math.floor(intensity / 2); // Reduz trevas pela metade da intensidade
+        break;
+      case 'neutral':
+        // Ambas sobem (conflito interno)
+        lightDelta = Math.floor(intensity / 2);
+        darkDelta = Math.floor(intensity / 2);
+        break;
+      case 'dark':
+        // Luz desce, trevas sobe
+        lightDelta = -Math.floor(intensity / 2); // Reduz luz pela metade da intensidade
+        darkDelta = intensity;
+        break;
+    }
+
     return new MoralState({
       lightSide: this._lightSide + lightDelta,
       darkSide: this._darkSide + darkDelta,

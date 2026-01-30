@@ -154,6 +154,20 @@ project/
 
 ## ⚙️ Regras de Negócio
 
+### Sistema Moral Balanceado
+
+O sistema usa um modelo de **equilíbrio dinâmico** entre Luz e Trevas:
+
+| Tipo de Decisão | Efeito na Luz | Efeito nas Trevas |
+|-----------------|---------------|-------------------|
+| **Luz** ☀️ | +intensidade | -intensidade/2 |
+| **Neutra** ⚖️ | +intensidade/2 | +intensidade/2 |
+| **Trevas** 🌑 | -intensidade/2 | +intensidade |
+
+- **Estado inicial**: 50 Luz / 20 Trevas
+- **Limites**: 0-100 para ambos os valores
+- Decisões neutras aumentam o **conflito interno**
+
 ### Progressão Moral
 
 - `darkSide >= 80` → Queda para o Lado Sombrio
