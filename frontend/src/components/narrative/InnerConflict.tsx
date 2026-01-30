@@ -10,21 +10,14 @@ interface InnerConflictProps {
   lightSide: number;
   darkSide: number;
   isInConflict: boolean;
-  emotion: string;
 }
 
 export const InnerConflict: React.FC<InnerConflictProps> = ({
   lightSide,
   darkSide,
   isInConflict,
-  emotion: _emotion,
 }) => {
   const balance = lightSide - darkSide;
-  
-  // Calcular intensidade do conflito (usado para animações futuras)
-  const _conflictIntensity = isInConflict 
-    ? 100 - Math.abs(balance) 
-    : Math.max(0, 50 - Math.abs(balance));
 
   return (
     <div className="relative w-64 h-64 mx-auto">
