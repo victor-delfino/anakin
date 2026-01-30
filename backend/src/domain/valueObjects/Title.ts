@@ -9,6 +9,7 @@ export type TitleType =
   | 'padawan'         // Aprendiz Jedi
   | 'jedi_knight'     // Cavaleiro Jedi
   | 'jedi_master'     // Mestre Jedi (nunca alcançado)
+  | 'chosen_one'      // O Escolhido (lightSide >= 90)
   | 'fallen_jedi'     // Jedi Caído
   | 'darth_vader';    // Lorde Sith
 
@@ -48,6 +49,12 @@ export class Title {
       description: 'O título que lhe foi negado',
       era: 'Nunca alcançado',
       requiredLightSide: 85,
+    },
+    chosen_one: {
+      displayName: 'O Escolhido',
+      description: 'Aquele que trará equilíbrio à Força - a profecia se cumpre',
+      era: 'Profecia Realizada',
+      requiredLightSide: 90,
     },
     fallen_jedi: {
       displayName: 'Jedi Caído',
@@ -92,6 +99,11 @@ export class Title {
       return Title.create('fallen_jedi');
     }
 
+    // O ESCOLHIDO - lightSide >= 90 (caminho da profecia)
+    if (lightSide >= 90 && darkSide <= 20) {
+      return Title.create('chosen_one');
+    }
+
     // Mestre Jedi (caminho alternativo)
     if (lightSide >= 85 && darkSide <= 30) {
       return Title.create('jedi_master');
@@ -129,10 +141,17 @@ export class Title {
   }
 
   /**
+   * Verifica se é O Escolhido
+   */
+  isChosenOne(): boolean {
+    return this._value === 'chosen_one';
+  }
+
+  /**
    * Verifica se é um título Jedi
    */
   isJedi(): boolean {
-    return ['padawan', 'jedi_knight', 'jedi_master'].includes(this._value);
+    return ['padawan', 'jedi_knight', 'jedi_master', 'chosen_one'].includes(this._value);
   }
 
   /**

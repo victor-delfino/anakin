@@ -9,6 +9,7 @@ import {
   GetEventUseCase,
   ProcessDecisionUseCase,
   GetCharacterStateUseCase,
+  GetSessionHistoryUseCase,
 } from '../../application/useCases/index.js';
 import {
   PostgresCharacterRepository,
@@ -151,6 +152,27 @@ router.get('/session/:sessionId/character', asyncHandler(async (req: Request, re
   const useCase = new GetCharacterStateUseCase(
     characterRepository,
     userDecisionRepository
+  );
+
+  const result = await useCase.execute({ sessionId });
+
+  res.json({
+    success: true,
+    data: result,
+  });
+}));
+
+/**
+ * GET /api/session/:sessionId/history
+ * Retorna o histórico completo de decisões da sessão
+ */
+router.get('/session/:sessionId/history', asyncHandler(async (req: Request, res: Response) => {
+  const { sessionId } = req.params;
+
+  const useCase = new GetSessionHistoryUseCase(
+    userDecisionRepository,
+    eventRepository,
+    decisionRepository
   );
 
   const result = await useCase.execute({ sessionId });

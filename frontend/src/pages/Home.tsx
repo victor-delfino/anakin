@@ -115,7 +115,6 @@ export const Home: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 2.5 }}
         >
-          Um projeto de narrativa interativa com Clean Architecture
         </motion.p>
       </motion.div>
 

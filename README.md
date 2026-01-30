@@ -120,6 +120,7 @@ project/
 | GET | `/api/session/:id/event/:eventId` | Detalhes do evento |
 | POST | `/api/session/:id/event/:eventId/decision` | Processa decisão |
 | GET | `/api/session/:id/character` | Estado do personagem |
+| GET | `/api/session/:id/history` | Histórico completo de decisões |
 
 ## 🎮 Fluxo do Sistema
 
@@ -135,13 +136,13 @@ project/
 ### Domain Layer
 
 - **Entities**: Character, CanonicalEvent, Decision, UserDecisionRecord
-- **Value Objects**: MoralState, Emotion, Title
+- **Value Objects**: MoralState, Emotion, Title, ForceConnection
 - **Rules**: MoralProgressionRules, EventProgressionRules
 - **Services**: NarrativeContextService
 
 ### Application Layer
 
-- **Use Cases**: StartSession, GetTimeline, GetEvent, ProcessDecision, GetCharacterState
+- **Use Cases**: StartSession, GetTimeline, GetEvent, ProcessDecision, GetCharacterState, GetSessionHistory
 - **Interfaces**: Repositories, AIService, CacheService
 
 ### Infrastructure Layer
@@ -156,13 +157,20 @@ project/
 ### Progressão Moral
 
 - `darkSide >= 80` → Queda para o Lado Sombrio
+- `lightSide >= 90 && darkSide <= 20` → **O Escolhido** (Chosen One)
 - `lightSide >= 85 && darkSide <= 30` → Maestria Jedi
 - Decisões afetam valores numéricos determinísticos
 
 ### Títulos
 
-- Slave → Padawan → Jedi Knight → Jedi Master (caminho da luz)
+- Slave → Padawan → Jedi Knight → Jedi Master → **Chosen One** (caminho da luz)
 - Fallen Jedi → Darth Vader (caminho das trevas)
+
+### Conexão com a Força
+
+- **ForceConnection** - Representa a conexão de Anakin com a Força
+- Níveis: Dormant → Awakening → Trained → Powerful → Extraordinary → Chosen One
+- Anakin possui 27.000 midi-chlorians (maior que Yoda)
 
 ## 🛡️ Tecnologias
 
