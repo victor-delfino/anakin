@@ -2,6 +2,17 @@
 
 Sistema narrativo interativo baseado na trajetória de Anakin Skywalker, implementado com Clean Architecture.
 
+## 🖼️ Screenshots
+
+### Tela Inicial
+![Tela Inicial](docs/images/home.png)
+
+### Timeline - Após as Primeiras Escolhas
+![Timeline](docs/images/timeline.png)
+
+### O Caminho de Vader - A Queda
+![Vader Path](docs/images/vader_decision.png)
+
 ## 🎯 Sobre o Projeto
 
 Este é um sistema de narrativa interativa onde o usuário acompanha eventos canônicos da vida de Anakin Skywalker, toma decisões e observa a progressão moral (Lado Luminoso x Lado Sombrio).
