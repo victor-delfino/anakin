@@ -17,12 +17,12 @@ export const InnerConflict: React.FC<InnerConflictProps> = ({
   lightSide,
   darkSide,
   isInConflict,
-  emotion,
+  emotion: _emotion,
 }) => {
   const balance = lightSide - darkSide;
   
-  // Calcular intensidade do conflito
-  const conflictIntensity = isInConflict 
+  // Calcular intensidade do conflito (usado para animações futuras)
+  const _conflictIntensity = isInConflict 
     ? 100 - Math.abs(balance) 
     : Math.max(0, 50 - Math.abs(balance));
 

@@ -15,7 +15,7 @@ import type { TimelineEvent } from '../types';
 
 export const Timeline: React.FC = () => {
   const navigate = useNavigate();
-  const { sessionId, isSessionActive, restoreSession, isLoading } = useSession();
+  const { sessionId, isSessionActive, restoreSession: _restoreSession, isLoading } = useSession();
   
   const { events, progress, currentEra } = useAnakinStore(selectTimeline);
   const { lightSide, darkSide } = useAnakinStore(selectMoralState);

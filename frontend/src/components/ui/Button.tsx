@@ -3,14 +3,14 @@
 // ============================================
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonProps = Omit<HTMLMotionProps<'button'>, 'children'> & {
   variant?: 'primary' | 'secondary' | 'danger' | 'ghost' | 'light' | 'dark';
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
   children: React.ReactNode;
-}
+};
 
 export const Button: React.FC<ButtonProps> = ({
   variant = 'primary',

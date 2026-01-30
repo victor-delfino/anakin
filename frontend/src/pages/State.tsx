@@ -18,7 +18,7 @@ export const State: React.FC = () => {
   const { lightSide, darkSide } = useAnakinStore(selectMoralState);
   const { name, title, emotion, hasFallen } = useAnakinStore(selectCharacterInfo);
   const isInConflict = useAnakinStore(state => state.isInConflict);
-  const titleDescription = useAnakinStore(state => state.titleDescription);
+  const _titleDescription = useAnakinStore(state => state.titleDescription);
   const sessionId = useAnakinStore(state => state.sessionId);
 
   useEffect(() => {

@@ -19,7 +19,6 @@ export const ForceMeter: React.FC<ForceMeterProps> = ({
   showLabels = true,
   size = 'md',
 }) => {
-  const total = lightSide + darkSide || 1;
   const lightPercent = (lightSide / 100) * 100;
   const darkPercent = (darkSide / 100) * 100;
 
