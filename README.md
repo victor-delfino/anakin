@@ -5,13 +5,13 @@ Sistema narrativo interativo baseado na trajetória de Anakin Skywalker, impleme
 ## 🖼️ Screenshots
 
 ### Tela Inicial
-![Tela Inicial](docs/images/home.png)
+![Tela Inicial](https://raw.githubusercontent.com/victor-delfino/anakin/main/docs/images/home.png)
 
 ### Timeline - Após as Primeiras Escolhas
-![Timeline](docs/images/timeline.png)
+![Timeline](https://raw.githubusercontent.com/victor-delfino/anakin/main/docs/images/timeline.png)
 
 ### O Caminho de Vader - A Queda
-![Vader Path](docs/images/vader_decision.png)
+![Vader Path](https://raw.githubusercontent.com/victor-delfino/anakin/main/docs/images/vader_decision.png)
 
 ## 🎯 Sobre o Projeto
 
