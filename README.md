@@ -213,6 +213,9 @@ O sistema usa um modelo de **equilíbrio dinâmico** entre Luz e Trevas:
 - Zustand
 - React Router
 
+Teste agora mesmo:
+https://anakin-1.onrender.com/
+
 ## 📝 Licença
 
 Este projeto é para fins educacionais. Star Wars é propriedade da Lucasfilm/Disney.
